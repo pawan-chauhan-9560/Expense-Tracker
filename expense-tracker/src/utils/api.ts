@@ -80,12 +80,12 @@ export const deleteBudget = async (id: string) => {
 //Reports
 
 export const getMonthlyReport = async () => {
-    const response = await axios.get(`/reports/monthly`);
+    const response = await api.get(`/reports/monthly`);
     return response.data;
   };
   
   export const getYearlyReport = async () => {
-    const response = await axios.get(`/reports/yearly`);
+    const response = await api.get(`/reports/yearly`);
     return response.data;
   };
   

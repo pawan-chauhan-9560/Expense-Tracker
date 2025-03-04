@@ -22,4 +22,7 @@ export class Expense {
 
   @UpdateDateColumn()
   updatedAt!: Date;
+
+  @Column()
+  user_id!: number;
 }

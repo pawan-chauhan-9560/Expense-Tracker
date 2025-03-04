@@ -38,21 +38,21 @@ const Dashboard: React.FC = () => {
         setBudgets(budgetsData);
 
         const total = expensesData.reduce(
-          (sum: any, expense: any) => sum + expense.amount,
+          (sum: any, expense: any) => sum + Number(expense.amount),
           0
         );
         setTotalExpenses(total);
 
         const totalBudget = budgetsData.reduce(
-          (sum: any, budget: any) => sum + budget.limit,
+          (sum: any, budget: any) => sum + Number(budget.limit),
           0
         );
         setRemainingBudget(totalBudget - total);
 
         const summary: Record<string, number> = {};
         expensesData.forEach((expense: any) => {
-          summary[expense.category] =
-            (summary[expense.category] || 0) + expense.amount;
+          const amount = Number(expense.amount);
+          summary[expense.category] = (summary[expense.category] || 0) + amount;
         });
         setCategorySummary(summary);
       } catch (error) {
@@ -64,40 +64,40 @@ const Dashboard: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-r from-purple-400 to-blue-600 p-6">
-      <main className="flex-grow w-full max-w-5xl mx-auto">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-purple-500 via-blue-500 to-indigo-600 p-6">
+      <main className="flex-grow w-full max-w-4xl mx-auto">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl font-bold text-white text-center mb-8"
+          className="text-4xl font-extrabold text-white text-center mb-8"
         >
           Welcome, {user?.email}!
         </motion.h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition transform hover:scale-105"
+            className="bg-white p-8 rounded-3xl shadow-xl text-center hover:shadow-2xl transition transform hover:scale-105"
           >
             <h2 className="text-lg font-semibold text-gray-700">
               Total Expenses
             </h2>
-            <p className="text-3xl font-bold text-blue-700">₹{totalExpenses}</p>
+            <p className="text-4xl font-bold text-blue-700">₹{totalExpenses}</p>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition transform hover:scale-105"
+            className="bg-white p-8 rounded-3xl shadow-xl text-center hover:shadow-2xl transition transform hover:scale-105"
           >
             <h2 className="text-lg font-semibold text-gray-700">
               Remaining Budget
             </h2>
-            <p className="text-3xl font-bold text-green-700">
+            <p className="text-4xl font-bold text-green-700">
               ₹{remainingBudget}
             </p>
           </motion.div>
@@ -106,18 +106,22 @@ const Dashboard: React.FC = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition transform hover:scale-105"
+            className="bg-white p-8 rounded-3xl shadow-xl text-center hover:shadow-2xl transition transform hover:scale-105"
           >
             <h2 className="text-lg font-semibold text-gray-700">
               Category Summary
             </h2>
-            <ul className="text-sm text-gray-600">
+            <ul className="text-base text-gray-600 space-y-2">
               {Object.entries(categorySummary).length === 0 ? (
-                <p>No expenses yet.</p>
+                <p className="text-gray-500">No expenses yet.</p>
               ) : (
                 Object.entries(categorySummary).map(([category, amount]) => (
-                  <li key={category}>
-                    {category}: ₹{amount}
+                  <li
+                    key={category}
+                    className="font-medium flex justify-between border-b pb-2 border-gray-200"
+                  >
+                    <span>{category}</span>{" "}
+                    <span className="font-bold text-indigo-600">₹{amount}</span>
                   </li>
                 ))
               )}

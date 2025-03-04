@@ -20,11 +20,12 @@ const Reports: React.FC = () => {
 
   const fetchReport = async () => {
     try {
+      let data: ReportData[] = [];
       if (reportType === "monthly") {
-        const data = await getMonthlyReport();
+        data = (await getMonthlyReport()) || []; // Ensure data is an array
         setMonthlyReport(data);
       } else {
-        const data = await getYearlyReport();
+        data = (await getYearlyReport()) || [];
         setYearlyReport(data);
       }
     } catch (error) {
@@ -33,13 +34,20 @@ const Reports: React.FC = () => {
   };
 
   const handleExportToCSV = (data: ReportData[], filename: string) => {
+    if (!Array.isArray(data) || data.length === 0) return;
     const ws = XLSX.utils.json_to_sheet(data);
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, "Report");
     XLSX.writeFile(wb, filename);
   };
 
-  const reportData = reportType === "monthly" ? monthlyReport : yearlyReport;
+  const reportData: ReportData[] = Array.isArray(
+    reportType === "monthly" ? monthlyReport : yearlyReport
+  )
+    ? reportType === "monthly"
+      ? monthlyReport
+      : yearlyReport
+    : [];
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-r from-indigo-400 to-purple-600 p-6">

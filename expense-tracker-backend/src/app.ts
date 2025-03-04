@@ -16,7 +16,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/expenses", authMiddleware, expenseRoutes);
-app.use("/api/budgets", budgetRoutes);
+app.use("/api/budgets",authMiddleware, budgetRoutes);
 app.use("/api/reports", authMiddleware, reportRoutes);
 
 export default app;

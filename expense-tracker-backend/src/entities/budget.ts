@@ -16,4 +16,7 @@ export class Budget {
 
   @UpdateDateColumn()
   updatedAt!: Date;
+
+  @Column()
+  user_id!: number;
 }
