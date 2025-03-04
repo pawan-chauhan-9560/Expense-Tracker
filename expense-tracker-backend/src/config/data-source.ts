@@ -3,18 +3,21 @@ import { User } from "../entities/user";
 import { Expense } from "../entities/expense";
 import { Budget } from "../entities/budget";
 import { Report } from "../entities/report";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export const AppDataSource = new DataSource({
-  type: "postgres",
-  host: "ep-sweet-credit-a81zq8ke-pooler.eastus2.azure.neon.tech",
-  port: 5432,
-  username: "neondb_owner",
-  password: "npg_6KkdV9pbSuDR",
-  database: "neondb",
+  type: process.env.DB_TYPE as any, 
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT ? parseInt(process.env.DB_PORT) : 5432,
+  username: process.env.DB_USERNAME?.trim(), 
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
   ssl: {
     rejectUnauthorized: false,
   },
   synchronize: true,
   logging: false,
-  entities: [User, Expense, Budget, Report], 
+  entities: [User, Expense, Budget, Report],
 });
