@@ -51,7 +51,7 @@ const Header: React.FC = () => {
                 navigate(item.path);
                 setMenuOpen(false);
               }}
-              className="text-gray-700 hover:text-blue-600 text-lg px-4 py-2 rounded transition"
+              className="text-gray-700 hover:text-blue-600 text-lg px-4 py-2 rounded transition cursor-pointer"
             >
               {item.label}
             </button>

@@ -107,7 +107,7 @@ const Expenses: React.FC = () => {
         />
         <button
           onClick={handleAddExpense}
-          className="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600"
+          className="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600 cursor-pointer"
         >
           Add Expense
         </button>

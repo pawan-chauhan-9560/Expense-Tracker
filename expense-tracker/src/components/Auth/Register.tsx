@@ -98,7 +98,7 @@ const Register: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
             type="submit"
-            className="bg-green-600 text-white font-semibold p-3 rounded-lg w-full flex items-center justify-center hover:bg-green-700 transition"
+            className="bg-green-600 text-white font-semibold p-3 rounded-lg w-full flex items-center cursor-pointer justify-center hover:bg-green-700 transition"
             disabled={loading}
           >
             {loading ? (
@@ -110,7 +110,7 @@ const Register: React.FC = () => {
         </form>
         <p className="text-center text-gray-600 mt-4">
           Already have an account?{" "}
-          <a href="/" className="text-green-500 hover:underline">
+          <a href="/" className="text-green-500 hover:underline cursor-pointer">
             Login
           </a>
         </p>

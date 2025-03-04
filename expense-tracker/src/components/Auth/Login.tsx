@@ -74,7 +74,7 @@ const Login: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
             type="submit"
-            className="bg-blue-600 text-white font-semibold p-3 rounded-lg w-full flex items-center justify-center hover:bg-blue-700 transition"
+            className="cursor-pointer bg-blue-600 text-white font-semibold p-3 rounded-lg w-full flex items-center justify-center hover:bg-blue-700 transition"
             disabled={loading}
           >
             {loading ? <Loader className="animate-spin" size={20} /> : "Login"}
@@ -82,7 +82,7 @@ const Login: React.FC = () => {
         </form>
         <p className="text-center text-gray-600 mt-4">
           Don’t have an account?{" "}
-          <a href="/register" className="text-blue-500 hover:underline">
+          <a href="/register" className="text-blue-500 hover:underline cursor-pointer">
             Sign up
           </a>
         </p>

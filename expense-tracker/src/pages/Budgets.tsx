@@ -114,14 +114,14 @@ const Budgets: React.FC = () => {
         {editingBudget ? (
           <button
             onClick={handleUpdateBudget}
-            className="w-full bg-blue-500 text-white py-3 rounded hover:bg-blue-600 transition"
+            className="w-full bg-blue-500 text-white py-3 rounded hover:bg-blue-600 transition cursor-pointer"
           >
             Update Budget
           </button>
         ) : (
           <button
             onClick={handlesetBudget}
-            className="w-full bg-green-500 text-white py-3 rounded hover:bg-green-600 transition"
+            className="w-full bg-green-500 text-white py-3 rounded hover:bg-green-600 transition cursor-pointer"
           >
             Add Budget
           </button>
@@ -148,13 +148,13 @@ const Budgets: React.FC = () => {
                 <div className="space-x-2">
                   <button
                     onClick={() => setEditingBudget(budget)}
-                    className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition"
+                    className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition cursor-pointer"
                   >
                     Edit
                   </button>
                   <button
                     onClick={() => handleDeleteBudget(budget.id)}
-                    className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition"
+                    className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition cursor-pointer"
                   >
                     Delete
                   </button>
