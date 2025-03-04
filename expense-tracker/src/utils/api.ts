@@ -30,7 +30,7 @@ export const loginUser = async (email: string, password: string) => {
   return response.data;
 };
 
-// Expense APIs 
+// Expense APIs
 export const getExpenses = async () => {
   const response = await api.get("/expenses");
   return response.data;
@@ -62,7 +62,10 @@ export const getBudgets = async () => {
   return response.data;
 };
 
-export const setBudget = async (budget: { category: string; limit: number }) => {
+export const setBudget = async (budget: {
+  category: string;
+  limit: number;
+}) => {
   const response = await api.post("/budgets/addbudgets", budget);
   return response.data;
 };
@@ -79,13 +82,20 @@ export const deleteBudget = async (id: string) => {
 
 //Reports
 
-export const getMonthlyReport = async () => {
-    const response = await api.get(`/reports/monthly`);
-    return response.data;
-  };
-  
-  export const getYearlyReport = async () => {
-    const response = await api.get(`/reports/yearly`);
-    return response.data;
-  };
-  
+// api.ts
+// ../utils/api.ts
+export const getMonthlyReport = async (month: string, year: string) => {
+  const response = await api.get(
+    `/reports/monthly?month=${month}&year=${year}`,
+    { responseType: "blob" } // specify blob response
+  );
+  return response.data;
+};
+
+export const getYearlyReport = async (year: string) => {
+  const response = await api.get(`/reports/yearly?year=${year}`, {
+    responseType: "blob", // specify blob response
+  });
+  return response.data;
+};
+

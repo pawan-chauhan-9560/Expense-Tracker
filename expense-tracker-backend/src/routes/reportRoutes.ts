@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import { getMonthlyReport, getYearlyReport } from '../controllers/reportController';
+import { getMonthlyReportExport, getYearlyReportExport } from '../controllers/reportController';
 
 const reportRouter = Router();
 
-reportRouter.get('/monthly', getMonthlyReport);
-reportRouter.get('/yearly', getYearlyReport);
+reportRouter.get('/monthly', getMonthlyReportExport);
+reportRouter.get('/yearly', getYearlyReportExport);
 
 export default reportRouter;
