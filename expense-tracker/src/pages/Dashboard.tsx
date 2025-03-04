@@ -64,7 +64,7 @@ const Dashboard: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-purple-500 via-blue-500 to-indigo-600 p-6">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-purple-500 via-blue-500 to-indigo-600 p-6 rounded-3xl">
       <main className="flex-grow w-full max-w-4xl mx-auto">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}

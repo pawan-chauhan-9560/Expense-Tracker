@@ -75,7 +75,7 @@ const Budgets: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-green-400 to-blue-600 p-6">
+    <div className="min-h-screen bg-gradient-to-r from-green-400 to-blue-600 p-6 rounded-3xl">
       <motion.h1
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
